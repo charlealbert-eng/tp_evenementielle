@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechGabon - Services Numériques</title>
+<style>
+/* Base et réinitialisation */
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; color: #333; background-color: #f4f7f6; }
+
+/* En-tête et Navigation */
+header { background-color: #2c3e50; color: white; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 1000; }
+.logo { font-size: 24px; font-weight: bold; color: #3498db; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; }
+nav ul li a { color: white; text-decoration: none; font-weight: 500; transition: color 0.3s; }
+nav ul li a:hover { color: #3498db; }
+
+/* Bouton Menu Burger (Caché par défaut sur PC) */
+.menu-burger { display: none; font-size: 28px; cursor: pointer; color: white; }
+
+/* Section Héro (Accueil) */
+.hero { background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover; color: white; text-align: center; padding: 100px 20px; }
+.hero h1 { margin: 0 0 15px 0; font-size: 3em; }
+.hero p { font-size: 1.2em; margin-bottom: 30px; }
+.btn-action { padding: 12px 30px; font-size: 18px; border: none; background-color: #3498db; color: white; cursor: pointer; border-radius: 5px; font-weight: bold; transition: background 0.3s; }
+.btn-action:hover { background-color: #2980b9; }
+
+/* Section Services */
+.services-container { text-align: center; padding: 50px 20px; }
+.services { display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
+.service-card { background: white; padding: 30px; border-radius: 8px; width: 250px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-5px); }
+.service-card h3 { color: #2c3e50; }
+
+/* Pied de page */
+footer { background-color: #2c3e50; color: #ecf0f1; text-align: center; padding: 20px; margin-top: 40px; }
+
+/* Mode Responsive (Smartphones) */
+@media (max-width: 768px) {
+nav ul { display: none; flex-direction: column; width: 100%; position: absolute; top: 60px; left: 0; background-color: #2c3e50; padding: 15px 0; text-align: center; border-top: 1px solid #34495e; }
+nav ul.afficher { display: flex; } /* Classe ajoutée par JavaScript */
+.menu-burger { display: block; }
+}
+</style>
+</head>
+<body>
+
+<!-- En-tête -->
+<header>
+<div class="logo">TechGabon</div>
+<div class="menu-burger" id="btnBurger">☰</div>
+<nav>
+<ul id="menuNav">
+<li><a href="#">Accueil</a></li>
+<li><a href="#services">Expertise</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+
+<!-- Accueil -->
+<section class="hero">
+<h1>Solutions Numériques Innovantes</h1>
+<p>Développement, réseaux et cybersécurité pour les entreprises modernes.</p>
+<button class="btn-action" id="btnDevis">Démarrer un projet</button>
+</section>
+
+<!-- Services -->
+<section id="services" class="services-container">
+<h2>Notre Expertise</h2>
+<div class="services">
+<div class="service-card">
+<h3>Ingénierie Logicielle</h3>
+<p>Conception d'applications web et gestion de bases de données relationnelles.</p>
+</div>
+<div class="service-card">
+<h3>Administration Réseau</h3>
+<p>Déploiement, configuration et optimisation d'infrastructures d'entreprise.</p>
+</div>
+<div class="service-card">
+<h3>Cybersécurité</h3>
+<p>Audits de sécurité, protection des données et prévention des intrusions.</p>
+</div>
+</div>
+</section>
+
+<!-- Pied de page -->
+<footer id="contact">
+<p>Contactez-nous : contact@techgabon.com | Libreville, Gabon</p>
+<p>&copy; 2026 TechGabon. Tous droits réservés.</p>
+</footer>
+
+<!-- Scripts Événementiels -->
+<script>
+// 1. Événement sur le Menu Burger (Gestion de l'affichage mobile)
+const btnBurger = document.getElementById('btnBurger');
+const menuNav = document.getElementById('menuNav');
+
+btnBurger.addEventListener('click', function() {
+// La méthode 'toggle' ajoute la classe 'afficher' si elle n'y est pas, et la retire si elle y est
+menuNav.classList.toggle('afficher');
+});
+
+// 2. Événement sur le bouton d'action (Interaction utilisateur)
+const btnDevis = document.getElementById('btnDevis');
+
+btnDevis.addEventListener('click', function() {
+// Affiche une boîte de saisie à l'écran
+const emailUser = prompt("Entrez votre adresse e-mail pour être recontacté par nos experts :");
+
+// Vérification basique de l'entrée
+if (emailUser && emailUser.includes('@') && emailUser.includes('.')) {
+alert("Demande envoyée ! Notre équipe vous contactera prochainement à l'adresse : " + emailUser);
+} else if (emailUser !== null) {
+alert("Format d'adresse e-mail invalide. L'opération a été annulée.");
+}
+});
+</script>
+</body>
+</html>
